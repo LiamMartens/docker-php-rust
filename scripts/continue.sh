@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 export HOME=/home/www-data
 
 if [ -z "$PHP_PORT" ]; then
