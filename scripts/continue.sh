@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 export HOME=/home/www-data
 
 if [ -z "$PHP_PORT" ]; then
@@ -10,7 +10,7 @@ if [ -z "$TIMEZONE" ]; then
 fi
 
 # get ip addresses and export them as environment variables
-export PHP_TCP=`awk 'END{print $1} /etc/hosts'`
+export PHP_TCP=`awk 'END{print $1}' /etc/hosts`
 
 # set timezone
 cat /usr/share/zoneinfo/$TIMEZONE > /etc/localtime

@@ -11,7 +11,7 @@ RUN adduser -D www-data
 RUN apk update && apk upgrade
 
 # add packages
-RUN apk add tzdata perl curl
+RUN apk add tzdata perl curl bash
 
 # install php 7
 ENV PHPV=7
@@ -71,4 +71,4 @@ RUN chmod +x /home/www-data/run.sh
 COPY scripts/continue.sh /home/www-data/continue.sh
 RUN chmod +x /home/www-data/continue.sh
 
-ENTRYPOINT ["/home/www-data/run.sh", "su", "-m", "www-data", "-c", "/home/www-data/continue.sh /bin/bash"]
+ENTRYPOINT ["/home/www-data/run.sh", "su", "-m", "www-data", "-c", "/home/www-data/continue.sh /bin/sh"]
