@@ -22,6 +22,7 @@ echo $TIMEZONE > /etc/timezone
 # PHP_MEMORY_LIMIT -> memory_limit
 # PHP_ZLIB__OUTPUT_COMPRESSION -> zlib.output_compression
 #
+WWWVARS='[www]'
 ENV_VARS=($(env))
 for VAR in "${ENV_VARS[@]}"; do
 	VAR_NAME=$(echo $VAR | cut -d'=' -f 1)
@@ -31,8 +32,11 @@ for VAR in "${ENV_VARS[@]}"; do
 		PHP_SETTING=$(echo $PHP_SETTING | awk '{print tolower($0)}')
 		PHP_SETTING=$(echo $PHP_SETTING | perl -pe "s/__/./")
 		perl -pi -e "s/^$PHP_SETTING\s*=\s*.*/$PHP_SETTING = $VAR_VALUE/gi" /etc/php7/php.ini
+	else
+		WWWVARS="$WWWVARS"$'\n'"env[$VAR_NAME]=$VAR_VALUE"
 	fi
 done
+echo "$WWWVARS" > /etc/php7/php-fpm.d/env.conf
 
 # set php listen port
 perl -pi -e "s/listen\s*=\s*(.+):.+/listen = $PHP_TCP:$PHP_PORT/gi" /etc/php7/php-fpm.d/www.conf
