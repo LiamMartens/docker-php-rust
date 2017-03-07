@@ -14,45 +14,45 @@ RUN apk update && apk upgrade
 RUN apk add tzdata perl curl bash
 
 # install php 7
-ENV PHPV=7
+ENV PHPV=7.1
 RUN apk add --update --no-cache \
-    php$PHPV-mcrypt \
-    php$PHPV-soap \
-    php$PHPV-openssl \
-    php$PHPV-gmp \
-    php$PHPV-pdo_odbc \
-    php$PHPV-json \
-    php$PHPV-dom \
-    php$PHPV-pdo \
-    php$PHPV-zip \
-    php$PHPV-mysqli \
-    php$PHPV-sqlite3 \
-    php$PHPV-pdo_pgsql \
-    php$PHPV-bcmath \
-    php$PHPV-opcache \
-    php$PHPV-intl \
-    php$PHPV-mbstring \
-    php$PHPV-sockets \
-    php$PHPV-zlib \
-    php$PHPV-xml \
-    php$PHPV-session \
-    php$PHPV-pcntl \
-    php$PHPV-gd \
-    php$PHPV-odbc \
-    php$PHPV-pdo_mysql \
-    php$PHPV-pdo_sqlite \
-    php$PHPV-gettext \
-    php$PHPV-xmlreader \
-    php$PHPV-xmlrpc \
-    php$PHPV-bz2 \
-    php$PHPV-iconv \
-    php$PHPV-pdo_dblib \
-    php$PHPV-curl \
-    php$PHPV-ctype \
-    php$PHPV-pear \
-    php$PHPV-common \
-    php$PHPV-redis@testing \
-    php$PHPV-fpm
+    php$PHPV-mcrypt@testing \
+    php$PHPV-soap@testing \
+    php$PHPV-openssl@testing \
+    php$PHPV-gmp@testing \
+    php$PHPV-pdo_odbc@testing \
+    php$PHPV-json@testing \
+    php$PHPV-dom@testing \
+    php$PHPV-pdo@testing \
+    php$PHPV-zip@testing \
+    php$PHPV-mysqli@testing \
+    php$PHPV-sqlite3@testing \
+    php$PHPV-pdo_pgsql@testing \
+    php$PHPV-bcmath@testing \
+    php$PHPV-opcache@testing \
+    php$PHPV-intl@testing \
+    php$PHPV-mbstring@testing \
+    php$PHPV-sockets@testing \
+    php$PHPV-zlib@testing \
+    php$PHPV-xml@testing \
+    php$PHPV-session@testing \
+    php$PHPV-pcntl@testing \
+    php$PHPV-gd@testing \
+    php$PHPV-odbc@testing \
+    php$PHPV-pdo_mysql@testing \
+    php$PHPV-pdo_sqlite@testing \
+    php$PHPV-gettext@testing \
+    php$PHPV-xmlreader@testing \
+    php$PHPV-xmlrpc@testing \
+    php$PHPV-bz2@testing \
+    php$PHPV-iconv@testing \
+    php$PHPV-pdo_dblib@testing \
+    php$PHPV-curl@testing \
+    php$PHPV-ctype@testing \
+    php$PHPV-pear@testing \
+    php$PHPV-fpm@testing \
+    php7-common \
+    php7-redis@testing
 
 # create php directory
 RUN mkdir -p /etc/php7 /var/log/php7 /usr/lib/php7 /var/www && \
