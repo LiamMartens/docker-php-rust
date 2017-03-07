@@ -45,6 +45,6 @@ perl -pi -e "s/listen\s*=\s*(.+):.+/listen = $PHP_TCP:$PHP_PORT/gi" /etc/php7/ph
 perl -pi -e "s/;*date.timezone\s*=.*/date.timezone = $TIMEZONE/gi" /etc/php7/php.ini
 
 echo "Starting PHP FPM on $PHP_PORT"
-php-fpm7.1
+php-fpm7
 
 exec "$@"
