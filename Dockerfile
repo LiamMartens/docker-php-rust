@@ -50,9 +50,9 @@ RUN apk add --update --no-cache \
     php$PHPV-curl@testing \
     php$PHPV-ctype@testing \
     php$PHPV-pear@testing \
-    php$PHPV-fpm@testing \
-    php7-common \
-    php7-redis@testing
+    php$PHPV-fpm@testing
+
+RUN apk add git alpine-sdk gcc
 
 # create php directory
 RUN mkdir -p /etc/php7 /var/log/php7 /usr/lib/php7 /var/www && \
@@ -71,4 +71,4 @@ RUN chmod +x /home/www-data/run.sh
 COPY scripts/continue.sh /home/www-data/continue.sh
 RUN chmod +x /home/www-data/continue.sh
 
-ENTRYPOINT ["/home/www-data/run.sh", "su", "-m", "www-data", "-c", "/home/www-data/continue.sh /bin/sh"]
+ENTRYPOINT ["/home/www-data/run.sh", "su", "-m", "root", "-c", "/home/www-data/continue.sh /bin/sh"]
