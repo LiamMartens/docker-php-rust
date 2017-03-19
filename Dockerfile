@@ -54,7 +54,17 @@ RUN apk add --update --no-cache \
     php$PHPV-common \
     php$PHPV-redis@testing
 
-RUN apk add git alpine-sdk gcc
+# install phalcon
+RUN apk add php$PHPV-dev make autoconf \
+            gcc pcre-dev git g++ alpine-sdk
+RUN ln -s /usr/bin/php-config7 /usr/bin/php-config && \
+    ln -s /usr/bin/php7 /usr/bin/php && \
+    ln -s /usr/bin/phpize7 /usr/bin/phpize
+RUN git clone --single-branch git://github.com/phalcon/cphalcon
+RUN cd cphalcon/build && ./install
+RUN apk del php$PHPV-dev make autoconf \
+            gcc pcre-dev git g++ alpine-sdk &&\
+            rm -rf cphalcon
 
 # create php directory
 RUN mkdir -p /etc/php7 /var/log/php7 /usr/lib/php7 /var/www && \
