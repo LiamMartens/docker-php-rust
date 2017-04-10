@@ -47,4 +47,4 @@ perl -pi -e "s/;*date.timezone\s*=.*/date.timezone = $TIMEZONE/gi" /etc/php7/php
 echo "Starting PHP FPM on $PHP_PORT"
 php-fpm7
 
-exec "$@" >/dev/tty 2>/dev/tty </dev/tty
+exec "$@"
