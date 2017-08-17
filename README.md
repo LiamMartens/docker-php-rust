@@ -5,5 +5,4 @@
 * Defines 3 volumes (/etc/php7 for the configuration, /var/log/php7 for the log files and /var/www for the content)
 * Binds to port 9000 by default but can be overridden by a PHP_PORT environment variable
 * Automatically updates the conf/php-fpm.d/www.conf file with the correct IP and port.
-* Includes Phalcon framework as extension
-* Phalcon devtools has been .phar'd and put in the files directory
+* Includes Rust and Cargo
